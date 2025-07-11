@@ -1,0 +1,43 @@
+{
+  "name": "perahera-gallery-server",
+  "version": "1.0.0",
+  "main": "server-entry.js",
+  "scripts": {
+    "start": "node server-entry.js",
+    "start:dev": "nodemon server-entry.js",
+    "start:clean": "node --no-deprecation server-entry.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "setup": "npm install && node -e \"require('fs').copyFileSync('.env.example', '.env'); console.log('.env file created from .env.example. Please update the values.');\"",
+    "check-env": "node -e \"require('dotenv').config(); console.log('Environment check:'); console.log('PORT:', process.env.PORT || 'Not set'); console.log('DB_HOST:', process.env.DB_HOST || 'Not set'); console.log('DB_USER:', process.env.DB_USER || 'Not set'); console.log('JWT_SECRET:', process.env.JWT_SECRET ? 'Set' : 'Not set');\"",
+    "db:init": "node config/database-schema.js",
+    "db:migrate-checkout": "node migrate-checkout-flow.js",
+    "db:check-checkout": "node check-checkout-migration.js",
+    "db:test-migration": "node test-migration-function.js"
+  },
+  "keywords": [
+    "perahera",
+    "gallery",
+    "sri-lanka",
+    "api",
+    "booking"
+  ],
+  "author": "Perahera Gallery Team",
+  "license": "ISC",
+  "description": "Backend API server for Perahera Gallery booking application",
+  "dependencies": {
+    "axios": "^1.10.0",
+    "bcrypt": "^6.0.0",
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.0.1",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "firebase-admin": "^13.4.0",
+    "multer": "^2.0.0",
+    "mysql2": "^3.14.1",
+    "node-cron": "^4.1.0",
+    "nodemailer": "^6.10.1",
+    "puppeteer": "^24.12.1",
+    "qrcode": "^1.5.4"
+  }
+}
